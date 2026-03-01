@@ -1,33 +1,77 @@
-# PopStar
+# PopStar API
 
-Backend API REST en java con arquitectura MVC y persistencia en MySQL. Incluye endpoints CRUD, separación por capas (modelo, servicios, controladores) y pruebas de consumo mediante clientes HTTP.
+Backend API REST desarrollada en Java para la gestión de una cadena de restaurantes.  
+Implementa arquitectura MVC, operaciones CRUD sobre MySQL y separación por capas.  
+Incluye definición de base de datos y pruebas de consumo de endpoints mediante clientes HTTP.
 
+---
 
-## Modelo (popstar-model2)
->   Estructuración de los datos *Empleados* y *Sucursales*
+## Arquitectura del Proyecto
 
+### Modelo (`popstar-model2`)
+Define las entidades del sistema:
+- Empleados
+- Sucursales
 
-## Controlador (popstarCore2)
->   Control de utilización de datos persistentes MySQL
->   Además incluye para datos sin DB (DataPopStar.java)
+Representa la estructura de los datos persistidos en la base de datos MySQL.
 
+---
 
-## CRUD (popstar-servicios2) 
->   Definición de endpoints para CRUD de los datos persistentes de la DB MySQL
+### Controlador (`popstarCore2`)
+Gestiona el flujo de datos entre los servicios y la base de datos.
+Incluye:
+- Acceso a datos persistentes (MySQL)
+- Manejo de datos no persistentes (`DataPopStar.java`)
 
+---
 
-## Consumo de API
->   Consumo de los endpoints creados en la API  
+### Servicios / CRUD (`popstar-servicios2`)
+Implementa los endpoints REST para:
+- Crear
+- Leer
+- Actualizar
+- Eliminar
 
+Datos persistidos en MySQL mediante arquitectura MVC.
 
-## Definición de datos prueba (database)
->   Esquema de definición de la base de datos, contiene DDL y DML
+---
 
+### Consumo de la API
+Incluye pruebas de consumo de los endpoints REST utilizando clientes HTTP para validación del funcionamiento de la API.
 
+---
 
-### Se trabajó con: 
->   * **Librería** *Jersey* - para construcción de la API
->   * **Librería** *Gson* - Mejora la utilización de lenguaje JSON
->   * **Servidor** *Apache Tomcat* - Indispensable para servir APIS REST
->   * **Herramienta** *Bootstrap* - Mejora la rapidez al dar estilos
->   * **Lenguajes:** *Java, Xml, Html, Css, JavaScript*
+### Base de Datos (`database`)
+Contiene el esquema de la base de datos:
+- DDL (definición de tablas)
+- DML (datos de prueba)
+
+---
+
+## Tecnologías Utilizadas
+
+- **Java**
+- **Jersey** – Framework para construcción de APIs REST
+- **Gson** – Serialización y deserialización JSON
+- **Apache Tomcat** – Servidor de aplicaciones
+- **MySQL** – Base de datos relacional
+- **Bootstrap** – Estilos para cliente de consumo
+- **HTML, CSS, JavaScript**
+
+---
+
+## Ejecución del Proyecto
+
+1. Ejecutar el script `database/schema.sql` en MySQL.
+2. Configurar credenciales de conexión a la base de datos.
+3. Desplegar el proyecto en Apache Tomcat.
+4. Probar los endpoints mediante cliente HTTP (Postman o navegador).
+
+---
+
+## Endpoints (ejemplo)
+
+- `GET /empleados/getall`
+- `GET /sucursales/getall`
+
+---
