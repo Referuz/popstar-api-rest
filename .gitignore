@@ -1,0 +1,15 @@
+# NetBeans
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# Build folders
+build/
+dist/
+
+# JARs generados
+*.jar
+
+# Logs
+*.log

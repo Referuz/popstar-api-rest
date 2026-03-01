@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.utl.ldsm506.popstar.rest"}];updateSearchResults();
