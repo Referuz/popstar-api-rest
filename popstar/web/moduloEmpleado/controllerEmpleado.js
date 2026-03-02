@@ -14,18 +14,11 @@ export async function mostrarEmpleados(){
     await getSucursales();
     await getEmpleados();
     let informacion = document.getElementById("info");
-    let administrar = document.getElementById("administrar");
-    if(informacion.classList.contains("d-none")){ // si está oculta
-        informacion.classList.remove("d-none"); // muestrala
-        administrar.classList.add("d-none"); // y oculta eadministrar
-    }else{ // si informacion esta visible
-        informacion.classList.add("d-none"); // Escondela
-    }
     informacion.innerHTML = "";
     empleados.forEach(e=>{
         informacion.appendChild(crearCarta(e));
     });
-    
+    location.href = "#formAdministrarEmpleado";
 }
 
 function crearCarta(persona){
@@ -58,23 +51,11 @@ function crearCarta(persona){
        document.getElementById("txtAdminApellidos").value = persona.apellidos; 
        document.getElementById("txtAdminTelefono").value = persona.telefono; 
        document.getElementById("selectAdminSucursal").value = persona.sucursal.idSucursal; 
-       mostrarAdministracion();
     });
     column.appendChild(carta);
     return column;
 }
 
-
-export function mostrarAdministracion(){
-    let administrar = document.getElementById("administrar");
-    let informacion = document.getElementById("info");
-    if(administrar.classList.contains("d-none")){ // si administrar está oculta
-        administrar.classList.remove("d-none"); // muestrala
-        informacion.classList.add("d-none"); // oculta la parte "información"
-    }else{ // si esta visible
-        administrar.classList.add("d-none"); // escondela
-    }
-}
 
 async function getSucursales(){
     let selector = document.getElementById("selectAdminSucursal");
@@ -89,6 +70,8 @@ async function getSucursales(){
         });
     });
 }
+
+mostrarEmpleados();
 
 
 

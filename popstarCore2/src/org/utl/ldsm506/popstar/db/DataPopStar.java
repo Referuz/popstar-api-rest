@@ -10,6 +10,9 @@ import org.utl.ldsm506.popstar.model.Sucursal;
  * @author Referuz
  */
 
+// Archivo inutilizable, utilizar en caso de pruebas sin base de datos
+
+
 public class DataPopStar {
     public List<Sucursal> buildSuc(){
         Sucursal s1 = new Sucursal("Blvd. Adolfo López Mateos 2013, Los Saldos, 37170 León","Sucursal Insurgentes", 1, 21.1495, -101.7088);
