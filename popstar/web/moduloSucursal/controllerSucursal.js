@@ -24,10 +24,19 @@ export async function mostrarSucursales(){
     sucursales.forEach(e =>{
         var iconoSucursal = L.marker([e.latitud, e.longitud], 
             {icon : fastFoodIcon}).addTo(map);
+            iconoSucursal.on("click", f=>{
+                document.getElementById("txtAdminPlazaComercial").value = e.plazaComercial;
+                document.getElementById("txtAdminDomicilio").value = e.domicilio;
+                document.getElementById("txtAdminLatitud").value = e.latitud;
+                document.getElementById("txtAdminLongitud").value = e.longitud;
+                // document.getElementById("txtAdminId").value = e.idSucursal; HACER BOTON EN EL INDEX
+            });
         iconoSucursal.bindPopup(e.plazaComercial).openPopup();
     });
 }
 
+
+mostrarSucursales();
 
 
 

@@ -10,7 +10,6 @@ async function cargarModuloEmpleado(){
                             gralController = controller;
                 });
     });
-    location.href = "#seccionEmpleados";
 }
 
 function cargarModuloSucursal(){
@@ -23,7 +22,6 @@ function cargarModuloSucursal(){
                             gralController = controller;
                 });
     });
-    location.href = "#seccionSucursales";
 }
 
 document.getElementById("menu").querySelectorAll("button").forEach(y=>{
