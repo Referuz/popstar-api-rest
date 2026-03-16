@@ -7,18 +7,20 @@ package org.utl.ldsm506.popstar.model;
 
 public class Empleado {
     private int numeroEmpleado;
-    private String nombre, apellidos, telefono;
+    private String usuario, contrasenia, email;
     private Sucursal sucursal;
+    private Individuo individuo;
 
     public Empleado() {
     }
 
-    public Empleado(int numeroEmpleado, String nombre, String apellidos, String telefono, Sucursal sucursal) {
+    public Empleado(int numeroEmpleado, String usuario, String contrasenia, String email, Sucursal sucursal, Individuo individuo) {
         this.numeroEmpleado = numeroEmpleado;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.telefono = telefono;
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+        this.email = email;
         this.sucursal = sucursal;
+        this.individuo = individuo;
     }
 
     public int getNumeroEmpleado() {
@@ -29,47 +31,59 @@ public class Empleado {
         this.numeroEmpleado = numeroEmpleado;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Sucursal getIdSucursal() {
+    public Sucursal getSucursal() {
         return sucursal;
     }
 
-    public void setIdSucursal(Sucursal sucursal) {
+    public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
+    }
+
+    public Individuo getIndividuo() {
+        return individuo;
+    }
+
+    public void setIndividuo(Individuo individuo) {
+        this.individuo = individuo;
     }
 
     @Override
     public String toString() {
-        return "\"---------------------------------------"+
-                "\nNo. Empleado: "+numeroEmpleado+
-                "\nNombre: "+nombre+
-                "\nApellidos: "+apellidos+
-                "\nTelefono: "+telefono+
-                "\nIDSucursal: "+sucursal;
+        return "Empleado{" + "numeroEmpleado=" + numeroEmpleado + 
+                ", usuario=" + usuario + ", contrasenia=" + contrasenia + 
+                ", email=" + email + 
+                ", sucursal=" + "{Domicilio="+ sucursal.getDomicilio() +
+                                  ", Plaza="+ sucursal.getPlazaComercial() +
+                                  ", [Latitud,Longitud]=["+ 
+                                        sucursal.getLatitud() +","+
+                                        sucursal.getLongitud() +"]" +
+                ", id_individuo=" + individuo.getIdIndividuo() + '}';
     }
+
     
     
 }

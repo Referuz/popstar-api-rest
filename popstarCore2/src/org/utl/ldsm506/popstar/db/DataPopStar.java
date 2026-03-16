@@ -28,20 +28,20 @@ public class DataPopStar {
         return sucursales;
     }
     
-    public List<Empleado> buildEmp(){
-        List<Sucursal>  sucs = buildSuc();
-        Empleado e1 = new Empleado(1, "Sebastian", "Torres Araujo","4771221231", sucs.get(0));
-        Empleado e2 = new Empleado(2, "Estrella", "Yebra Sanches", "4777894562", sucs.get(1));
-        Empleado e3 = new Empleado(3, "Romina", "Ramires Hernandez", "4778951596", sucs.get(1));
-        Empleado e4 = new Empleado(4, "Said", "Rodriguez Gonzales", "4779637415", sucs.get(0));
-        Empleado e5 = new Empleado(10, "Oscar", "Villanueva Gimenes", "4776549632", sucs.get(1));
-        
-        List<Empleado> empleados = new ArrayList<>();
-        empleados.add(e1);
-        empleados.add(e2);
-        empleados.add(e3);
-        empleados.add(e4);
-        empleados.add(e5);
-        return empleados;
-    }
+//    public List<Empleado> buildEmp(){
+//        List<Sucursal>  sucs = buildSuc();
+//        Empleado e1 = new Empleado(1, "Sebastian", "Torres Araujo","4771221231", sucs.get(0));
+//        Empleado e2 = new Empleado(2, "Estrella", "Yebra Sanches", "4777894562", sucs.get(1));
+//        Empleado e3 = new Empleado(3, "Romina", "Ramires Hernandez", "4778951596", sucs.get(1));
+//        Empleado e4 = new Empleado(4, "Said", "Rodriguez Gonzales", "4779637415", sucs.get(0));
+//        Empleado e5 = new Empleado(10, "Oscar", "Villanueva Gimenes", "4776549632", sucs.get(1));
+//        
+//        List<Empleado> empleados = new ArrayList<>();
+//        empleados.add(e1);
+//        empleados.add(e2);
+//        empleados.add(e3);
+//        empleados.add(e4);
+//        empleados.add(e5);
+//        return empleados;
+//    }
 }
