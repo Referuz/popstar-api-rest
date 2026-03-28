@@ -3,6 +3,7 @@ nbproject/private/
 nbbuild/
 nbdist/
 .nb-gradle/
+**/nbproject/
 
 # --- Build & Output ---
 build/
