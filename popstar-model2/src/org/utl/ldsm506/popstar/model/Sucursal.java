@@ -8,18 +8,28 @@ package org.utl.ldsm506.popstar.model;
 
 public class Sucursal {
     private String domicilio, plazaComercial;
-    private int idSucursal;
+    private int idSucursal, estado;
     private double latitud, longitud;
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
     public Sucursal() {
     }
 
-    public Sucursal(String domicilio, String plazaComercial, int idSucursal, double latitud, double longitud) {
+    public Sucursal(String domicilio, String plazaComercial, int idSucursal, 
+            double latitud, double longitud, int estado) {
         this.domicilio = domicilio;
         this.plazaComercial = plazaComercial;
         this.idSucursal = idSucursal;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.estado = estado;
     }
 
     public String getDomicilio() {

@@ -1,7 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
+
+
 package org.utl.ldsm506.popstar.controller;
 
 import java.util.List;
@@ -19,6 +18,7 @@ public class NewMain {
     /**
      * @param args the command line arguments
      */
+    
     public static void insertarCliente() {
         // TODO code application logic here
         ControllerCliente cc = new ControllerCliente();
@@ -117,8 +117,22 @@ public class NewMain {
         System.out.println(empleados);
     }
     
+    public static void insertarSucursal(){
+        ControllerSucursal cs = new ControllerSucursal();
+        Sucursal s = new Sucursal();
+        s.setDomicilio("Domicilio UTL prueba inserción");
+        s.setLatitud(100.100);
+        s.setLongitud(-50.12345);
+        s.setPlazaComercial("Plaza insertada desde main");
+        try {
+            System.out.println(cs.insert(s));
+        } catch (Exception e) {
+            System.out.println("Error"+e.getMessage());
+        }
+    }
+    
     public static void main(String[] args) {        
-        mostrarEmpelados();
+        insertarSucursal();
     }
     
 }

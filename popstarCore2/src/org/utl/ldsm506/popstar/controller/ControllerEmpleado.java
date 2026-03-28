@@ -97,7 +97,7 @@ public class ControllerEmpleado {
         try {
             Connection conn = con.open();
             CallableStatement cls = conn.prepareCall(sql);
-            cls.setString(1, e.getUsuario());
+            cls.setInt(1, e.getNumeroEmpleado());
             cls.execute();
             
             cls.close();
@@ -108,4 +108,32 @@ public class ControllerEmpleado {
             System.out.println(x.getMessage());
         }
     }
+
+    public void updateEmpleado(Empleado e){
+        ConexionMySQL con = new ConexionMySQL();
+        String sql = "{CALL sp_deleteEmpleado(?, ?, ?, ?, ?, ?, ?)};";
+        // call sp_updateEmpleado(8, "Diego Said", "Garcia Fajardo", "124567890", 1, "121212", "p@mail.com");
+        try {
+            Connection conn = con.open();
+            CallableStatement cls = conn.prepareCall(sql);
+            cls.setInt(1, e.getNumeroEmpleado());
+            cls.setString(2, e.getIndividuo().getNombre());
+            cls.setString(3, e.getIndividuo().getApellidos());
+            cls.setString(4, e.getIndividuo().getTelefono());
+            cls.setInt(5, e.getSucursal().getIdSucursal());
+            cls.setString(6, e.getContrasenia());
+            cls.setString(7, e.getEmail());
+            cls.execute();
+           
+            cls.close();
+            conn.close();
+            con.close();
+            System.out.println("Eliminación finalizada");
+        } catch (Exception x) {
+            System.out.println(x.getMessage());
+        }
+        
+    }
+
+
 }

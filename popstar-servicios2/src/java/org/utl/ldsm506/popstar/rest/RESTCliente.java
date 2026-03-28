@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package org.utl.ldsm506.popstar.rest;
 
 import com.google.gson.Gson;
@@ -13,26 +16,27 @@ import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
-import org.utl.ldsm506.popstar.controller.ControllerSucursal;
-import org.utl.ldsm506.popstar.model.Sucursal;
+import org.utl.ldsm506.popstar.controller.ControllerCliente;
+import org.utl.ldsm506.popstar.model.Cliente;
 
 /**
+ *
  * @author Referuz
  */
-
-@Path("sucursal")
-public class RESTSucursal extends Application{
+@Path("cliente")
+public class RESTCliente extends Application{
     
     @Path("getall")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public Response getAll(){
         String out = null;
-        ControllerSucursal cs = new ControllerSucursal();
-        List<Sucursal> sucs = null;
+        ControllerCliente cc = new ControllerCliente();
+        List<Cliente> clientes = null;
+        
         try {
-        sucs = cs.getAll();
-        out = new Gson().toJson(sucs);
+            clientes = cc.getAll();
+            out = new Gson().toJson(clientes); // []
         } catch (Exception e) {
             out = """
                   {"response": ["Error" : "No hay conexión a la Base de Datos]}
@@ -40,25 +44,22 @@ public class RESTSucursal extends Application{
         }
         return Response.status(Response.Status.OK).entity(out).build();
     }
- 
-    @Path("agregarSucursal")
+    
+    
+    @Path("agregarCliente")
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    public Response insert(@FormParam("datosSucursal") @DefaultValue("")
-        String datosSucursal){
-        ControllerSucursal cs = new ControllerSucursal();
-        Sucursal sucursal = null;
-        
+    public Response agregarCliente(@FormParam("datosCliente") @DefaultValue("") 
+        String datosCliente){
         String out = """
-                     {"response":"GOOD"}
+                     {"prueba": "Proximamente una insercion"}
                      """;
-        
+        ControllerCliente cc = new ControllerCliente();
+        Cliente cliente = null;
         Gson gson = new Gson();
-        
         try {
-            sucursal = cs.insert(gson.fromJson(datosSucursal, Sucursal.class));
-            //            insertEmpleado
-            out = new Gson().toJson(sucursal);
+            cliente = cc.insertClient(gson.fromJson(datosCliente, Cliente.class));
+            out = gson.toJson(cliente);
         } catch (JsonSyntaxException je) {
             out = """
                      {"error": "No se pudo transformar el ducumento JSON"}
@@ -71,16 +72,17 @@ public class RESTSucursal extends Application{
         return Response.status(Response.Status.OK).entity(out).build();
     }
 
-    @Path("eliminarSucursal")
+    
+    @Path("eliminarCliente")
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    public Response deleteSucursal(@FormParam("datosSucursal") @DefaultValue("")
-        String datosSucursal){
-        ControllerSucursal cc = new ControllerSucursal();
+    public Response deleteCliente(@FormParam("datosCliente") @DefaultValue("")
+        String datosCliente){
+        ControllerCliente cc = new ControllerCliente();
         Gson gson = new Gson();
         String out = "";
         try {
-            cc.deleteSucursal(gson.fromJson(datosSucursal, Sucursal.class));
+            cc.deleteClient(gson.fromJson(datosCliente, Cliente.class));
             out = """
                      {"response": "deleted"}
                      """;

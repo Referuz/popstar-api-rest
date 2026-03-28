@@ -6,7 +6,7 @@ package org.utl.ldsm506.popstar.model;
  */
 
 public class Empleado {
-    private int numeroEmpleado;
+    private int numeroEmpleado, estatus;
     private String usuario, contrasenia, email;
     private Sucursal sucursal;
     private Individuo individuo;
@@ -14,8 +14,14 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int numeroEmpleado, String usuario, String contrasenia, String email, Sucursal sucursal, Individuo individuo) {
+    @Override
+    public String toString() {
+        return "Empleado{" + "numeroEmpleado=" + numeroEmpleado + ", estatus=" + estatus + ", usuario=" + usuario + ", contrasenia=" + contrasenia + ", email=" + email + ", sucursal=" + sucursal + ", individuo=" + individuo + '}';
+    }
+
+    public Empleado(int numeroEmpleado, int estatus, String usuario, String contrasenia, String email, Sucursal sucursal, Individuo individuo) {
         this.numeroEmpleado = numeroEmpleado;
+        this.estatus = estatus;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.email = email;
@@ -29,6 +35,14 @@ public class Empleado {
 
     public void setNumeroEmpleado(int numeroEmpleado) {
         this.numeroEmpleado = numeroEmpleado;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
     }
 
     public String getUsuario() {
@@ -71,18 +85,7 @@ public class Empleado {
         this.individuo = individuo;
     }
 
-    @Override
-    public String toString() {
-        return "Empleado{" + "numeroEmpleado=" + numeroEmpleado + 
-                ", usuario=" + usuario + ", contrasenia=" + contrasenia + 
-                ", email=" + email + 
-                ", sucursal=" + "{Domicilio="+ sucursal.getDomicilio() +
-                                  ", Plaza="+ sucursal.getPlazaComercial() +
-                                  ", [Latitud,Longitud]=["+ 
-                                        sucursal.getLatitud() +","+
-                                        sucursal.getLongitud() +"]" +
-                ", id_individuo=" + individuo.getIdIndividuo() + '}';
-    }
+    
 
     
     

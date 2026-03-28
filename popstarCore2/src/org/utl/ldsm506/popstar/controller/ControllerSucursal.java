@@ -1,13 +1,16 @@
 
 package org.utl.ldsm506.popstar.controller;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Types;
 import org.utl.ldsm506.popstar.db.ConexionMySQL;
 import org.utl.ldsm506.popstar.db.DataPopStar;
+import org.utl.ldsm506.popstar.model.Cliente;
 import org.utl.ldsm506.popstar.model.Empleado;
 import org.utl.ldsm506.popstar.model.Sucursal;
 
@@ -48,26 +51,52 @@ public class ControllerSucursal {
 
     }
 
-    public void insert(Sucursal s){
-        DataPopStar dps = new DataPopStar();
-        sucursales=dps.buildSuc();
-        sucursales.add(s);
+    public Sucursal insert(Sucursal s){
+        ConexionMySQL con = new ConexionMySQL();
+        Connection conn = null;
+        CallableStatement cls = null;
+        String consulta = "{call sp_insert_sucursal(?, ?, ?, ?, ?)};";
+        try {
+            conn = con.open();
+            cls = conn.prepareCall(consulta);
+            cls.setString(1, s.getDomicilio());
+            cls.setString(2, s.getPlazaComercial());
+            cls.setDouble(3, s.getLatitud());
+            cls.setDouble(4, s.getLongitud());
+            cls.registerOutParameter(5, Types.INTEGER);
+            cls.execute();
+            s.setIdSucursal(cls.getInt(5));
+            s.setEstado(0);
+        } catch (Exception e) {
+        
+        }
+        
+        return s;
 
     }
 
-    public void delete(Sucursal s){
-        DataPopStar dps = new DataPopStar();
-        sucursales=dps.buildSuc();
-        sucursales.remove(s);
-
+    public void deleteSucursal(Sucursal s){
+        ConexionMySQL con = new ConexionMySQL();
+        Connection conn = null;
+        CallableStatement cls = null;
+        String sql = "{CALL sp_deleteSucursal(?)};";
+        try {
+            conn = con.open();
+            cls = conn.prepareCall(sql);
+            // Envio de query para un procedure
+            // Envio de parametros de entrada
+            cls.setInt(1, s.getIdSucursal());
+            // Ejecutar la consulta
+            cls.execute();
+            cls.close();
+            conn.close();
+            con.close();
+            System.out.println("Eliminación finalizada");
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
-
-    public void update(Sucursal s){
-        DataPopStar dps = new DataPopStar();
-        sucursales=dps.buildSuc();
-        //Implementar el metodo de busqueda de Estructura de Datos
-        //Cambiar el objeto sucursal
-
-    }
+    
  
 }

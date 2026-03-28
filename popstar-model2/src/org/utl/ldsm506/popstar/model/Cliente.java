@@ -13,7 +13,7 @@ public class Cliente {
     private String cuenta, domicilio;
     private Sucursal sucursal;
     private Individuo individuo;
-    private byte status;
+    private int status;
 
     public Cliente() {
     }
@@ -58,11 +58,11 @@ public class Cliente {
         this.individuo = individuo;
     }
 
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
 package org.utl.ldsm506.popstar.controller;
 
 /**
@@ -87,7 +85,7 @@ public class ControllerCliente {
             cls.execute();
             c.setCuenta(cls.getString(6));
             c.getIndividuo().setIdIndividuo(cls.getInt(7));
-            
+            c.setStatus(1);
             cls.close();
             conn.close();
             con.close();

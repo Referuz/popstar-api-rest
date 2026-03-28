@@ -1,15 +1,33 @@
-# NetBeans
+# --- IDE (NetBeans) ---
 nbproject/private/
 nbbuild/
 nbdist/
 .nb-gradle/
 
-# Build folders
+# --- Build & Output ---
 build/
 dist/
-
-# JARs generados
 *.jar
+*.war
+*.class
 
-# Logs
+# --- Logs y Temporales ---
 *.log
+tmp/
+temp/
+
+# --- SEGURIDAD (Crítico) ---
+.env
+*.key
+*.pem
+credentials.*
+secrets/
+
+# --- Base de Datos ---
+*.sql.gz
+*.sqlite
+# Nota: No ignores tus scripts .sql de creación (DDL), solo los respaldos de datos.
+
+# --- OS ---
+.DS_Store
+Thumbs.db
